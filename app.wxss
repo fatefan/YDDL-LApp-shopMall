@@ -1,0 +1,11 @@
+.title1 {
+    background-color: #6666FF;
+    color: #eee;
+}
+.title2 {
+    background-color: #66CCFF;
+    color: #eee;
+}
+page {
+    background-color: #f5f5f5;
+}

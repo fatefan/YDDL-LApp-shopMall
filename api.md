@@ -14,6 +14,7 @@
 			- productId --- 产品Id
 			- introduce --- 商品介绍
 			- price --- 商品价格
+			- productName --- 商品名词
 		- classification --- 分类 Array 项目是Object
 			- name
 			- data --- 分类商品数据
@@ -21,3 +22,4 @@
 				- price --- 商品价格
 				- introduce --- 商品介绍
 				- productId --- 产品Id
+				- productName --- 商品名词
