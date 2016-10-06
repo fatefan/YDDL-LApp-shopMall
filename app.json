@@ -2,10 +2,10 @@
     "pages":[
         "pages/index/index",
         "pages/detail/detail",
-        "pages/myCard/myCard"
+        "pages/myCar/myCar"
     ],
     "window":{
-        "navigationBarBackgroundColor":"#0066CC",
+        "navigationBarBackgroundColor":"#444444",
         "navigationBarTextStyle":"white",
         "navigationBarTitleText":"FastApp-shopMall"
     }

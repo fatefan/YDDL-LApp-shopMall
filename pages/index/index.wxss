@@ -18,14 +18,19 @@
 .classification-title {
     display: block;
     width: 100%;
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
 }
 .classification-list {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+}
+.title {
+    background-color: white;
+    color: #666;
+    border-left: 3px solid #0066CC;
 }
 /*.classification-list:nth-child(2n+1) {
     padding-right: 5px;
@@ -35,8 +40,7 @@
 }*/
 .product {
     display: flex;
-    width: 49%;
-    margin-bottom: 10px;
+    width: 49.5%;
     flex-flow: column;
     background-color: white;
 }
@@ -71,10 +75,10 @@
     font-size: 18px;
     width: 40%;
 }
-.add-myCard {
+.add-myCar {
     display: inline-block;
     vertical-align: middle;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px 10px;
     font-size: 14px;

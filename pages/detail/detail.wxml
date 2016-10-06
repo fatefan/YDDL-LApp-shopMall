@@ -2,10 +2,21 @@
     <scroll-view scroll-y="true"> 
         <image src="{{imgUrls[0]}}" class="slide-image"/>
         <view class="product-info">
-        <text class="product-introduce">天威（PrintRite）PR-CE278A/CRG328 双支装硒鼓 适用惠普 HP1536DNF 佳能 MF4752 M4410 M4450打印机硒鼓
-        </text>
-        <text class="product-price">￥333.00</text>
+            <text class="product-introduce">天威（PrintRite）PR-CE278A/CRG328 双支装硒鼓 适用惠普 HP1536DNF 佳能 MF4752 M4410 M4450打印机硒鼓
+            </text>
+            <text class="product-price">￥333.00</text>
+        </view>
+        <view class="product-detail">
+            <text class="detail-title">商品详情</text>
+            <image class="item-img" src="https://si.geilicdn.com/vshop313040714-5318417033851470739238-923718.jpg?w=1080&h=0"></image>
+            <image class="item-img" src="https://si.geilicdn.com/vshop313040714-5318417033851470739239-343790.jpg?w=1080&h=0"></image>
+            <image class="item-img" src="https://si.geilicdn.com/vshop313040714-5318417033851470739239-613612.jpg?w=1080&h=0"></image>
+            <image class="item-img" src="https://si.geilicdn.com/vshop313040714-5318417033851470739240-728569.jpg?w=1080&h=0"></image>
         </view>
     </scroll-view>
-
+</view>
+<view class="bottom-bar">
+    <view class="bar-content">
+        <view class="add-car" bindtap="addCar">加入购物车</view>
+    </view>
 </view>

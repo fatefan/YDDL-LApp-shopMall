@@ -1,0 +1,28 @@
+<view>
+    <view class="top-bar">
+        <view class="tool-bar">
+            <view class="empty-selected no-empty"></view>
+            <view>
+                <text class="clean">清空</text>
+            </view>
+        </view>
+    </view>
+    <scroll-view scroll-y="true" class="car-content">
+        <view class="car-item">
+            <view class="no-selected"></view>
+            <image class="pro-img" src="https://wd.geilicdn.com/vshop313040714-5318417033851470739235-781748.jpg?w=60&h=60&cp=1"></image>
+            <view class="pro-info">
+                <text class="pro-introduce">善领车顶盒X801S 后视镜行记录 车载行车电脑多功能后视镜</text>
+                <view>
+                    <text class="pro-price">￥333.00</text>
+                </view>
+            </view>
+        </view> 
+    </scroll-view>
+    <view class="bottom-bar">
+        <view class="settleAccount">
+            <text class="amount">￥3330.00</text>
+            <view class="pay">支付</view>
+        </view>
+    </view>
+</view>

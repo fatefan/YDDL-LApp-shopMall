@@ -30,10 +30,13 @@ var index = {
       duration: e.detail.value
     })
   },
-  checkDetail: function () {
+  checkDetail: function (e) {
       wx.navigateTo({url:'../../pages/detail/detail',success:function() {
           console.info("跳转!")
       }});
+  },
+  addCar: function (e) {
+    wx.navigateTo({url:'../../pages/myCar/myCar'})
   }
 };
 Page(index);
