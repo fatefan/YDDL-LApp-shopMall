@@ -1,0 +1,23 @@
+# shopMall API#
+##index##
+- __api :__  "/shopMall"
+- __mothod :__ "GET"
+- __params:__
+	- "shopId" --- 商家ID --- 必填 --- int
+- __return:__
+	- code --- 状态码
+		- 0 成功
+		- 1001 失败
+	- data --- 数据 ---- Object
+		- slide --- 幻灯片 --- Array 项目是Object
+			- imgUrl --- 图片地址
+			- productId --- 产品Id
+			- introduce --- 商品介绍
+			- price --- 商品价格
+		- classification --- 分类 Array 项目是Object
+			- name
+			- data --- 分类商品数据
+				- imgUrl --- 图片地址
+				- price --- 商品价格
+				- introduce --- 商品介绍
+				- productId --- 产品Id
