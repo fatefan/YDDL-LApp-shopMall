@@ -6,7 +6,9 @@ appKey: "NkA8kxpPmtK3NHwgy6vVBls0",
  
 App({
   onLaunch: function() { 
-    // Do something initial when launch.
+     wx.setStorage({key:"shopCarData",
+            data:[]
+     })
   },
   onShow: function() {
       // Do something when show.

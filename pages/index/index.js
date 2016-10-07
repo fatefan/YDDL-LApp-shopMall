@@ -3,69 +3,83 @@ AV.init({
 appId: "po7YWHB3bjxCwOkLEyBbO0Y6-gzGzoHsz",
 appKey: "NkA8kxpPmtK3NHwgy6vVBls0",
 });
-var allData = [];
+var allData = [],shopCarData=[];
 var index = {
     data:{
-        imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    indicatorDots: true,
-    autoplay: false,
-    interval: 5000,
-    duration: 1000
+        list:allData,
+        shopCarData:shopCarData,
+        carBar:false,
+        carCount:0
     },
     onReady:function () {
         var query = new AV.Query('FSCategory');
         query.equalTo('f_app_id', 1);
-        query.find().then(queryCategoryCallback, function (error) {
+        query.find().then(this.queryCategoryCallback, function (error) {
         });
     },
+    onShow:function () {
+        shopCarData = wx.getStorageSync('shopCarData');
+        if(shopCarData.length != 0) {
+            this.setData({
+                shopCarData:shopCarData,
+                carBar: true
+            })
+        }
+    },
     checkDetail: function (e) {
-        wx.navigateTo({url:'../../pages/detail/detail',success:function() {
+        var parentIndex = e.currentTarget.dataset.parentIndex;
+        var index = e.currentTarget.dataset.index
+        wx.navigateTo({url:'../../pages/detail/detail?parentIndex='+parentIndex+'&index='+index,success:function() {
             console.info("跳转!")
         }});
     },
     addCar: function (e) {
-        wx.navigateTo({url:'../../pages/myCar/myCar'})
-    }
-};
+        var parentIndex = e.currentTarget.dataset.parentIndex;
+        var index = e.currentTarget.dataset.index;
+        var value = allData[parentIndex].data[index];
+        // if(shopCarData.length != 0) {
 
-/**
- * 分类查询 回调方法
- */
-function queryCategoryCallback (results) {
-    if(results.length != 0) {
-        var queryProduce = new AV.Query('FSProduct');
-        for(let i = 0, l = results.length;i<l;i++) {
-            let p = {
-                f_category_name : results[i].attributes.f_category_name,
-                f_category_id : results[i].attributes.f_category_id,
-                data : []
+        // } else {
+            shopCarData.push(value);
+        // }
+        console.info(shopCarData);
+        this.setData({shopCarData:shopCarData,carBar:true,carCount:shopCarData.length});
+        wx.setStorage({key:'shopCarData',data:shopCarData});
+        
+    },
+    settle: function (e) {
+        wx.navigateTo({url:'../../pages/myCar/myCar'})
+    },
+    queryCategoryCallback:function (results) {
+        if(results.length != 0) {        
+            var params = [];
+            for(let i = 0, l = results.length;i<l;i++) {
+                let p = {
+                    f_category_name : results[i].attributes.f_category_name,
+                    f_category_id : results[i].attributes.f_category_id,
+                    data : []
+                };
+                allData.push(p);
+                params[i] = (new AV.Query('FSProduct')).equalTo('f_category_id',p.f_category_id);                   
             };
-            allData.push(p);
-            console.info(p.f_category_id);                    
-            queryProduce.equalTo('f_category_id',p.f_category_id);
-            queryProduce.find().then(queryProduceCallback);
+            var query =  AV.Query.or.apply(null,params);
+            query.find().then(this.queryProduceCallback)
         }
+    },
+    queryProduceCallback:function (results) {
+        if(results.length != 0) {
+            var category_id = results[0].attributes.f_category_id;
+            for(let i = 0,l = results.length; i < l; i++) {
+                let category_id = results[i].attributes.f_category_id;
+                let a = 0, b = allData.length;
+                while (allData[a].f_category_id != category_id) {
+                    ++a;
+                };
+                allData[a].data.push(results[i].attributes);
+            }
+        };
+        this.setData({list:allData})
+        wx.setStorage({key:'productList',data:allData});
     }
 };
-/**
- * 产品查询 回调方法
- */
-function queryProduceCallback (results) {
-    console.info('产品查询 回调方法');
-    if(results.length != 0) {
-        var category_id = results[0].attributes.f_category_id;
-        var i = 0,l = allData.length;
-        while (allData[i].f_category_id != category_id) {
-            ++i;
-        };
-        for(let a = 0,b = results.length; a<b;b++) {
-            allData[i].data.push(results[a].attributes);
-        }
-    };
-    console.info(allData);
-}
 Page(index);

@@ -1,50 +1,24 @@
-<!--<scroll-view scroll-y="true" class="slide-view">
-    <view class="slide-item" wx:for-items="{{imgUrls}}">
-        <image src="{{item}}" class="slide-image"/>
-    </view>
-</scroll-view>-->
+
 <view class="body">
-    <scroll-view scroll-y="true"> 
-        <view>
-            <text class="classification-title title">电脑办公</text>
+    <scroll-view scroll-y="true" class="content"> 
+        <view wx:for="{{list}}"    wx:for-index="idx" wx:for-item="listItem">
+            <text class="classification-title title">{{listItem.f_category_name}}</text>
             <view class="classification-list">
-                <view class="product" bindtap="checkDetail">
-                    <image class="product-image" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" />
+                <view class="product" data-parent-index="{{idx}}" data-index="{{index}}" bindtap="checkDetail" wx:for="{{listItem.data}}">
+                    <image class="product-image" src="{{item.f_image_url}}" />
                     <view class="product-info">
-                        <text class="product-text">天威（PrintRite）PR-CE278A/CRG328 双支装硒鼓 适用惠普 HP1536DNF 佳能 MF4752 M4410 M4450打印机硒鼓</text>
-                        <text class="product-price">￥333.00</text>
-                        <view class="add-myCar" catchtap="addCar">加入购物车</view>
+                        <text class="product-text">{{item.f_introduce}}</text>
+                        <text class="product-price">￥{{item.f_price}}</text>
+                        <view class="add-myCar" data-parent-index="{{idx}}" data-index="{{index}}" catchtap="addCar">加入购物车</view>
                     </view>
-                </view>
-                <view class="product">
-                    <image class="product-image" src="http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg" />
-                </view>
-                <view class="product">
-                    <image class="product-image" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" />
-                </view>
-                <view class="product">
-                    <image class="product-image" src="http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg" />
-                </view>
-            </view>
-        </view>
-        <view>
-            <text class="classification-title title">家用电器</text>
-            <view class="classification-list">
-                <view class="product">
-                    <image class="product-image" src="http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg" />
-                </view>
-                <view class="product">
-                    <image class="product-image" src="http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg" />
-                </view>
-                <view class="product">
-                    <image class="product-image" src="http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg" />
-                </view>
-                <view class="product">
-                    <image class="product-image" src="http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg" />
                 </view>
             </view>
         </view>
     </scroll-view>
+    <view class="bottom-bar" wx:if="{{carBar}}">
+        <view class="bottom-bar-car"><text class="calc">{{shopCarData.length}}</text></view>
+        <view class="settle" bindtap="settle">结算</view>
+    </view>
 </view>
 
 

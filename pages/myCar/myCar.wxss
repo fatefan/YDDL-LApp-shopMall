@@ -35,10 +35,10 @@
     align-items: center;
     z-index: 999;
 }
-.no-empty,.selected {
+.no-empty {
     background-color: #CC0033;
 }
-.no-empty::before,.selected::before {
+.no-empty::before{
     position: absolute;
     top: 0;
     left: 0;
@@ -62,7 +62,7 @@
 }
 .car-content {
     display: block;
-    padding-top: 52px;
+    padding-top: 20px;
     padding-bottom: 40px;
 }
 .car-item {
@@ -70,17 +70,35 @@
     width: 100%;
     flex-flow: row;
     align-items: center;
-    background-color: white;  
+    background-color: white;
+    border-bottom: 1px solid #eee;  
 }
 .no-selected {
     position: relative;
     flex-basis: auto;
     height: 24px;
-    width: 34px;
+    width: 24px;
     margin-left: 10px;
     margin-right: 10px;
     background-color: #e5e5e5;
     border-radius: 12px;
+}
+.selected {
+    background-color: #CC0033;
+}
+.selected::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:0;
+    margin: auto;
+    content: '';
+    width: 8px;
+    height: 4px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg)
 }
 .pro-img {
     width: 60px;
